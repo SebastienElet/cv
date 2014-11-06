@@ -8,4 +8,4 @@ My curriculum vitæ
 
 ## License
 
-This project is under the MIT License. Please, see [`LICENSE`](LICENCE).
+This project is under the MIT License. Please, see [`LICENSE`](LICENSE).
