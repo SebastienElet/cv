@@ -85,12 +85,10 @@ gulp.task('build-html', function() {
 
 gulp.task('server', function() {
   app.use(express.query())
-    .use(express.bodyParser())
     .use(require('connect-livereload')({
       port: liveReloadPort
     }))
     .use(express.static(__dirname + '/' + distPath))
-    .use(express.logger())
     .listen(expressPort, function() {
       gutil.log('HTTP Server listening on port ' + expressPort);
     })

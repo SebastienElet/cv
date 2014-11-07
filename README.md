@@ -6,6 +6,10 @@ cv
 
 My curriculum vitæ
 
+## Thanks
+
+Thanks to [Ivan Enderlin](https://github.com/Hywan) for the design.
+
 ## License
 
 This project is under the MIT License. Please, see [`LICENSE`](LICENSE).
