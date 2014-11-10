@@ -60,7 +60,7 @@ gulp.task('build-fonts', function() {
 });
 
 gulp.task('build-css', function() {
-  return gulp.src(srcPath + 'less/screen.less')
+  return gulp.src(srcPath + 'less/*.less')
     .pipe(require('gulp-streamify')(require('gulp-less')))
     .on('error', function(error) {
       gutil.log(error);
