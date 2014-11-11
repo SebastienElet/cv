@@ -126,6 +126,9 @@ gulp.task('ghpages', function(next) {
     , folder: 'dist'
   }
   , function(err) {
+    if (err) {
+      gutil.log(err);
+    }
     gutil.log('Gh-pages updated');
     next();
   });
