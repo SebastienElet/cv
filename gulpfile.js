@@ -119,6 +119,7 @@ gulp.task('ghpages', function() {
     ignore: [',git']
     , branch: 'gh-pages'
     , folder: 'dist'
+    , domain: 'sebastien.elet.fr'
   }
   , function(err) {
     if (err) {
