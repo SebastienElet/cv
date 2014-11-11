@@ -133,6 +133,6 @@ gulp.task('ghpages', function(next) {
 
 gulp.task('build', ['build-html', 'build-fonts', 'build-css']);
 
-gulp.task('publish', ['clean', 'mkdir', 'build', 'ghpages']);
+gulp.task('publish', ['ghpages']);
 
 gulp.task('default', ['clean', 'mkdir', 'build', 'server', 'watch']);
