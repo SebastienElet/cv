@@ -88,7 +88,7 @@ gulp.task('build-html', function(next) {
       gutil.log(error);
       this.emit('end');
     })
-    .pipe(gulp.dest(distPath + 'index.html'))
+    .pipe(gulp.dest(distPath))
     .pipe(livereload(server))
     .once('end', next)
   ;
@@ -112,7 +112,7 @@ gulp.task('watch', function() {
       gutil.log(error);
     }
     gutil.log('LR Server listening on port ' + liveReloadPort);
-    require('open')('http://localhost:' + expressPort + '/index.html');
+    require('open')('http://localhost:' + expressPort + '/');
   });
   gulp.watch(srcPath + '*.jade', ['build-html']);
   gulp.watch(srcPath + 'less/*.less', ['build-css']);
