@@ -5,6 +5,7 @@ var gulp = require('gulp')
   , rm = require('gulp-rm')
   , fs = require('fs')
   , del = require('del')
+  , buildbranch = require('buildbranch')
   , express = require('express')
   , expressPort = 8080
   , app = express()
@@ -22,7 +23,7 @@ gulp.task('clean', function() {
   ]);
 });
 
-gulp.task('mkdir', function() {
+gulp.task('mkdir', function(next) {
   try {
     fs.mkdirSync(distPath);
   } catch (e) {
@@ -40,27 +41,35 @@ gulp.task('mkdir', function() {
   } catch (e) {
   }
 
-  return gulp
+  gulp
     .src([srcPath + 'images/*'])
     .pipe(gulp.dest(distPath + 'images/'))
+    .once('end', next)
   ;
 });
 
-gulp.task('build-fonts', function() {
+gulp.task('build-fonts', ['build-fonts-ttf', 'build-fonts-woff']);
+
+gulp.task('build-fonts-ttf', function(next) {
   gulp.src([srcPath + 'fonts/*.ttf'])
     .pipe(gulp.dest(distPath + 'fonts/'))
     .pipe(require('gulp-ttf2eot')())
     .pipe(gulp.dest(distPath + 'fonts/'))
+    .once('end', next)
   ;
+});
+
+gulp.task('build-fonts-woff', function(next) {
   gulp.src([srcPath + 'fonts/*.ttf'])
     .pipe(require('gulp-ttf2woff')())
     .pipe(gulp.dest(distPath + 'fonts/'))
     .pipe(gulp.dest('dist'))
+    .once('end', next)
   ;
 });
 
-gulp.task('build-css', function() {
-  return gulp.src(srcPath + 'less/*.less')
+gulp.task('build-css', function(next) {
+  gulp.src(srcPath + 'less/*.less')
     .pipe(require('gulp-streamify')(require('gulp-less')))
     .on('error', function(error) {
       gutil.log(error);
@@ -68,11 +77,12 @@ gulp.task('build-css', function() {
     })
     .pipe(gulp.dest(distPath + 'css/'))
     .pipe(livereload(server))
+    .once('end', next)
   ;
 });
 
-gulp.task('build-html', function() {
-  return gulp.src(srcPath + 'index.jade')
+gulp.task('build-html', function(next) {
+  gulp.src(srcPath + 'index.jade')
     .pipe(jade({pretty: true}))
     .on('error', function(error) {
       gutil.log(error);
@@ -80,6 +90,7 @@ gulp.task('build-html', function() {
     })
     .pipe(gulp.dest(distPath + 'index.html'))
     .pipe(livereload(server))
+    .once('end', next)
   ;
 });
 
@@ -108,6 +119,20 @@ gulp.task('watch', function() {
   gulp.watch(srcPath + 'fonts/*.ttf', ['build-fonts']);
 });
 
+gulp.task('ghpages', function(next) {
+  buildbranch({
+    ignore: [',git']
+    , branch: 'gh-pages'
+    , folder: 'dist'
+  }
+  , function(err) {
+    gutil.log('Gh-pages updated');
+    next();
+  });
+});
+
 gulp.task('build', ['build-html', 'build-fonts', 'build-css']);
+
+gulp.task('publish', ['clean', 'mkdir', 'build', 'ghpages']);
 
 gulp.task('default', ['clean', 'mkdir', 'build', 'server', 'watch']);
