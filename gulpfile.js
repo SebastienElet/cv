@@ -23,7 +23,7 @@ gulp.task('clean', function() {
   ]);
 });
 
-gulp.task('mkdir', function() {
+gulp.task('mkdir', ['clean'], function() {
   try {
     fs.mkdirSync(distPath);
   } catch (e) {
@@ -49,7 +49,7 @@ gulp.task('mkdir', function() {
 
 gulp.task('build-fonts', ['build-fonts-ttf', 'build-fonts-woff']);
 
-gulp.task('build-fonts-ttf', function() {
+gulp.task('build-fonts-ttf', ['mkdir'], function() {
   return gulp.src([srcPath + 'fonts/*.ttf'])
     .pipe(gulp.dest(distPath + 'fonts/'))
     .pipe(require('gulp-ttf2eot')())
@@ -57,7 +57,7 @@ gulp.task('build-fonts-ttf', function() {
   ;
 });
 
-gulp.task('build-fonts-woff', function() {
+gulp.task('build-fonts-woff', ['mkdir'], function() {
   return gulp.src([srcPath + 'fonts/*.ttf'])
     .pipe(require('gulp-ttf2woff')())
     .pipe(gulp.dest(distPath + 'fonts/'))
@@ -65,7 +65,7 @@ gulp.task('build-fonts-woff', function() {
   ;
 });
 
-gulp.task('build-css', function() {
+gulp.task('build-css', ['mkdir'], function() {
   return gulp.src(srcPath + 'less/*.less')
     .pipe(require('gulp-streamify')(require('gulp-less')))
     .on('error', function(error) {
@@ -77,7 +77,7 @@ gulp.task('build-css', function() {
   ;
 });
 
-gulp.task('build-html', function() {
+gulp.task('build-html', ['mkdir'], function() {
   return gulp.src(srcPath + 'index.jade')
     .pipe(jade({pretty: true}))
     .on('error', function(error) {
@@ -89,7 +89,7 @@ gulp.task('build-html', function() {
   ;
 });
 
-gulp.task('server', function() {
+gulp.task('server', ['build-html', 'build-css', 'build-fonts'], function() {
   app.use(express.query())
     .use(require('connect-livereload')({
       port: liveReloadPort
@@ -101,7 +101,7 @@ gulp.task('server', function() {
   ;
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['server'], function() {
   server.listen(liveReloadPort, function(error) {
     if (error) {
       gutil.log(error);
