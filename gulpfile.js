@@ -3,6 +3,8 @@ var gulp = require('gulp')
   , gutil = require('gulp-util')
   , jade = require('gulp-jade')
   , rm = require('gulp-rm')
+  , iconFont = require('gulp-iconfont')
+  , consolidate = require('gulp-consolidate')
   , fs = require('fs')
   , del = require('del')
   , buildbranch = require('buildbranch')
@@ -23,7 +25,7 @@ gulp.task('clean', function() {
   ]);
 });
 
-gulp.task('mkdir', ['clean'], function() {
+gulp.task('mkdir', function() {
   try {
     fs.mkdirSync(distPath);
   } catch (e) {
@@ -62,6 +64,35 @@ gulp.task('build-fonts-woff', ['mkdir'], function() {
     .pipe(require('gulp-ttf2woff')())
     .pipe(gulp.dest(distPath + 'fonts/'))
     .pipe(gulp.dest('dist'))
+  ;
+});
+
+gulp.task('build-fonts-icons', ['mkdir'], function() {
+  gulp.src([srcPath + 'icons/*.svg'])
+    /*
+    .pipe(iconFontCss({
+      fontName: 'myicons'
+      , base: '../fonts/'
+      , targetPath: '../../' + srcPath + 'less/icons.less'
+      , fontPath: srcPath + 'fonts/'
+    }))
+    */
+    .pipe(iconFont({
+      fontName: 'myicons'
+      , normalize: true
+    }))
+    .on('codepoints', function(codepoints, options) {
+      gulp.src(srcPath + 'templates/icons.less')
+        .pipe(consolidate('lodash', {
+          glyphs: codepoints
+          , fontName: 'myicons'
+          , fontPath: '../fonts/'
+          , className: 'icon'
+        }))
+        .pipe(gulp.dest(srcPath + 'less/'))
+      ;
+    })
+    .pipe(gulp.dest(srcPath + 'fonts/'))
   ;
 });
 
