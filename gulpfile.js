@@ -20,9 +20,11 @@ var gulp = require('gulp')
 ;
 
 gulp.task('clean', function() {
-  return del([
-    distPath
-  ]);
+  return del.sync(
+    [
+      distPath + '*'
+    ]
+  );
 });
 
 gulp.task('mkdir', function() {
