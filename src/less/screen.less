@@ -62,6 +62,11 @@ h1 {
   text-align: right;
   margin-right: 1em;
 }
+@media print {
+  h1.page_break {
+    page-break-before: always;
+  }
+}
 
 h2 {
   font-size: 1.5em;
@@ -134,6 +139,10 @@ div.timeline ul > li::before {
   content: ' ';
   border-top: 2px #eee solid;
 }
+div.timeline ul.group > li::before {
+  content: '';
+  border-top: none;
+}
 
 div.experience {
   background: url('../images/experience.jpg');
@@ -152,4 +161,12 @@ div.education {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+}
+@media print {
+  div.experience,
+  div.skills,
+  div.education {
+    color: inherit !important;
+    background-image: none !important;
+  }
 }
