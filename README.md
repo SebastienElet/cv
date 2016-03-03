@@ -1,8 +1,8 @@
 cv
 ==
 
-[![Dependency Status](https://david-dm.org/Nasga/cv.png)](https://david-dm.org/Nasga/cv) 
-[![devDependency Status](https://david-dm.org/Nasga/cv/dev-status.png)](https://david-dm.org/Nasga/cv#info=devDependencies)
+[![Dependency Status](https://david-dm.org/SebastienElet/cv.png)](https://david-dm.org/SebastienElet/cv) 
+[![devDependency Status](https://david-dm.org/SebastienElet/cv/dev-status.png)](https://david-dm.org/SebastienElet/cv#info=devDependencies)
 
 My curriculum vitæ
 
