@@ -5,6 +5,7 @@
   "main": "gulpfile.js",
   "repository": "https://github.com/Nasga/cv.git",
   "scripts": {
+    "html": "mkdir -p dist && jade src/*.jade --out dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sébastien ELET <sebastien@elet.fr>",
