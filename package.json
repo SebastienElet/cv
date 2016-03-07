@@ -5,8 +5,12 @@
   "main": "gulpfile.js",
   "repository": "https://github.com/Nasga/cv.git",
   "scripts": {
-    "html": "mkdir -p dist && jade src/*.jade --out dist",
+    "build:html": "mkdir -p dist && jade src/*.jade --out dist",
+    "build:css": "mkdir -p dist/css && lessc src/less/screen.less dist/css/screen.css",
+    "build:fonts": "mkdir -p dist/fonts",
+    "build": "npm run build:html && npm run build:css && npm run build:fonts",
     "serve": "browser-sync start --server dist --files 'dist/css/*.css, dist/js/*.js'",
+    "clean": "rm -rf dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sébastien ELET <sebastien@elet.fr>",
@@ -31,8 +35,11 @@
     "gulp-util": "~3.0",
     "gulp-watch": "~3.0",
     "jade": "~1.8",
+    "less": "^2.6.1",
     "lodash": "~2.4",
     "open": "~0.0",
-    "tiny-lr": "~0.1"
+    "tiny-lr": "~0.1",
+    "ttf2eot": "^2.0.0",
+    "ttf2woff": "^2.0.1"
   }
 }
