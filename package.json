@@ -5,7 +5,9 @@
   "main": "gulpfile.js",
   "repository": "https://github.com/Nasga/cv.git",
   "scripts": {
-    "deploy": "npm run build && gh-pages-deploy",
+    "deploy": "npm run build && npm run deploy:branch  && cp -R dist/* . && npm run deploy:clean && git add -A && git commit -a --no-gpg-sign -m 'gh-pages-update' && git push origin gh-pages --force && git checkout master",
+    "deploy:branch": "git branch -f gh-pages && git checkout gh-pages && git reset --hard origin/master",
+    "deploy:clean": "rm -rf README.md LICENSE packages.json src",
     "build:html": "mkdir -p dist && jade src/*.jade --out dist",
     "build:css": "mkdir -p dist/css && lessc src/less/screen.less dist/css/screen.css",
     "build:fonts": "mkdir -p dist/fonts && cp src/fonts/*.ttf dist/fonts && ttf2woff src/fonts/Roboto-Light.ttf dist/fonts/Roboto-light.woff",
@@ -20,21 +22,11 @@
     "postinstall": "npm run build && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "gh-pages-deploy": {
-    "staticpath": "dist",
-    "post":[
-      "rm README.md",
-      "rm LICENSE",
-      "rm package.json",
-      "rm -rf src"
-    ]
-  },
   "author": "Sébastien ELET <sebastien@elet.fr>",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "browser-sync": "^2.11.1",
-    "gh-pages-deploy": "^0.4.2",
     "imagemin-cli": "^2.1.0",
     "jade": "^1.11.0",
     "less": "^2.6.1",
