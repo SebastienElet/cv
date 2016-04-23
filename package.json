@@ -10,7 +10,7 @@
     "deploy:clean": "rm -rf README.md LICENSE packages.json src",
     "build:html": "mkdir -p dist && jade src/*.jade --out dist",
     "build:css": "mkdir -p dist/css && lessc src/less/screen.less dist/css/screen.css",
-    "build:fonts": "mkdir -p dist/fonts && cp src/fonts/*.ttf dist/fonts && ttf2woff src/fonts/Roboto-Light.ttf dist/fonts/Roboto-light.woff",
+    "build:fonts": "mkdir -p dist/fonts && cp src/fonts/*.ttf dist/fonts && ttf2woff src/fonts/Roboto-Light.ttf dist/fonts/Roboto-Light.woff",
     "build:images": "imagemin src/images dist/images -p",
     "build": "npm run build:html && npm run build:css && npm run build:fonts && npm run build:images",
     "watch:css": "onchange 'src/less/*.less' -- npm run build:css",
