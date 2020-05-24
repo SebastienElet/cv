@@ -1,0 +1,149 @@
+{
+  "basics": {
+    "name": "Sébastien Elet",
+    "label": "Programmer",
+    "picture": "",
+    "email": "",
+    "phone": "",
+    "profiles": [
+      {
+        "network": "Twitter",
+        "username": "SebastienElet",
+        "url": "http://twitter.com/SebastienElet"
+      },
+      {
+        "network": "Github",
+        "username": "SebastienElet",
+        "url": "http://github.com/SebastienElet"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "SebastienElet",
+        "url": "http://linkedin.com/SebastienElet"
+      }
+    ]
+  },
+  "work": [
+    {
+      "company": "SimpliField",
+      "position": "Lead backend developer",
+      "location": "Lille, France",
+      "startDate": "2017-03-01",
+      "endDate": "2020-08-31",
+      "summary": "SimpliField is a platform to improve efficiency for retailers",
+      "highlights": [
+        "Migrate infrastructure from VMware to GCP",
+        "Migrate MongoDB databases to Mongo Atlas",
+        "Setup docker for development",
+        "Setup IAM server",
+        "Migrate from MongoDB Gridfs to Minio with GCS",
+        "Setup Monorepo"
+      ]
+    },
+    {
+      "company": "SimpliField",
+      "position": "Full stack developer",
+      "location": "Lille, France",
+      "startDate": "2015-10-12",
+      "endDate": "2017-03-01",
+      "summary": "SimpliField is a platform to improve efficiency for retailers",
+      "highlights": [
+        "Setup synchronization between the API and Salesforce Application",
+        "Publish open source ansible roles",
+        "Migrate all the codebase in EcmaScript 2016",
+        "Migrate servers from baremetal to a cluster VMware vSphere",
+        "Setup ansible for the whole infrastructure",
+        "Setup Open API documentation",
+        "Setup microservice architecture with RabbitMQ as message broker",
+        "Rewrite of the API for better performances"
+      ]
+    },
+    {
+      "company": "Denaroo",
+      "position": "Lead developer",
+      "location": "Amiens, France",
+      "startDate": "2011-02-01",
+      "endDate": "2015-09-23",
+      "summary": "Denaroo is a telecoms company focused on cloud call center solutions",
+      "highlights": [
+        "Setup ansible to configure the whole infrastructure",
+        "Integrate angularjs on existing applications",
+        "Consulting on Symfony 2 and Zend Framework 1 projects",
+        "Setup tests on applications with Atoum, simpletest and mocha",
+        "Migrate Xen servers to LXC containers",
+        "Migrate CTC from Java to NodeJS",
+        "Migrate IPBX from asterisk to freeswitch",
+        "Migrate from SNV to Git"
+      ]
+    },
+    {
+      "company": "Denaroo",
+      "position": "Developer",
+      "location": "Amiens, France",
+      "startDate": "2007-11-26",
+      "endDate": "2011-01-31",
+      "summary": "Denaroo is a telecoms company focused on cloud call center solutions",
+      "highlights": [
+        "Virtualize all web services with Xen",
+        "Setting Nginx on all production servers",
+        "Created CRM with PHP5",
+        "Created a web service (SOAP) for billing",
+        "IVR on Asterisk AEL or with Javascript and freeswitch",
+        "IPBX Maintenance with SIP/PSTN"
+      ]
+    }
+  ],
+  "references": [],
+  "skills": [
+    {
+      "keywords": ["html", "css", "javascript", "typescript"],
+      "level": "senior",
+      "name": "frontend"
+    },
+    {
+      "keywords": [
+        "expressjs",
+        "jest",
+        "javascript",
+        "typescript",
+        "mysql",
+        "mongodb"
+      ],
+      "level": "senior",
+      "name": "backend"
+    },
+    {
+      "keywords": ["ansible", "GCP", "VMware"],
+      "level": "senior",
+      "name": "ops"
+    }
+  ],
+  "education": [
+    {
+      "startDate": "2006",
+      "endDate": "2007",
+      "area": "web development",
+      "institution": "",
+      "studyType": "Bachelor"
+    },
+    {
+      "startDate": "2004",
+      "endDate": "2006",
+      "area": "networking solutions",
+      "institution": "",
+      "studyType": "Advanced technician"
+    }
+  ],
+  "publications": [],
+  "interests": [
+    {
+      "name": "archery"
+    },
+    {
+      "name": "open source"
+    },
+    {
+      "name": "whisky"
+    }
+  ]
+}

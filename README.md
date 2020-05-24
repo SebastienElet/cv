@@ -6,9 +6,12 @@ cv
 
 My curriculum vitæ
 
-## Thanks
+## TODO
 
-Thanks to [Ivan Enderlin](https://github.com/Hywan) for the design.
+- [ ] Write json resume
+- [ ] Setup nextjs
+- [ ] Setup deployment with vercel
+- [ ] Write some CSS 😭
 
 ## License
 
